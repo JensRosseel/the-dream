@@ -84,16 +84,22 @@
             <option value="eur">EUR</option>
             <option value="egp">EGP</option>
             <option value="usd">USD</option>
-            <option value="MXN">MXN</option>
+            <option value="mxn">MXN</option>
         </select>
-        <input type="text" name="value1" id="value1" value="<?php echo round($value1, 2) ?>">
+        <script type="text/javascript">
+            document.getElementById("currency1").value = "<?php echo $currency1; ?>";
+        </script>
+        <input type="text" name="value1" id="value1" value="<?php echo round($value1, 2); ?>">
         <select name="currency2" id="currency2">
             <option value="eur">EUR</option>
             <option value="egp">EGP</option>
             <option value="usd">USD</option>
-            <option value="MXN">MXN</option>
+            <option value="mxn">MXN</option>
         </select>
-        <input type="text" name="value2" id="value2" value="<?php echo round($value2, 2) ?>" readonly>
+        <script type="text/javascript">
+            document.getElementById("currency2").value = "<?php echo $currency2; ?>";
+        </script>
+        <input type="text" name="value2" id="value2" value="<?php echo round($value2, 2); ?>" readonly>
         <input type="submit" value="submit">
     </form>
 </body>
