@@ -1,6 +1,74 @@
 <?php
-    $egp = $_GET["egp"];
-    $euro = $egp * 0.0540;
+    $currency1 = $_GET["currency1"];
+    $currency2 = $_GET["currency2"];
+    $value1 = $_GET["value1"];
+
+    switch($currency1){
+        case "eur":
+            switch($currency2){
+                case "eur":
+                    $value2 = $value1;
+                    break;
+                case "egp":
+                    $value2 = $value1 * 18.5193;
+                    break;
+                case "usd":
+                    $value2 = $value1 * 1.1809;
+                    break;
+                case "mxn":
+                    $value2 = $value1 * 23.5816;
+                    break;
+            }
+            break;
+        case "egp":
+            switch($currency2){
+                case "eur":
+                    $value2 = $value1 * 0.0540;
+                    break;
+                case "egp":
+                    $value2 = $value1;
+                    break;
+                case "usd":
+                    $value2 = $value1 * 0.0638;
+                    break;
+                case "mxn":
+                    $value2 = $value1 * 1.2734;
+                    break;
+            }
+            break;
+        case "usd":
+            switch($currency2){
+                case "eur":
+                    $value2 = $value1 * 0.8468;
+                    break;
+                case "egp":
+                    $value2 = $value1 * 15.6822;
+                    break;
+                case "usd":
+                    $value2 = $value1;
+                    break;
+                case "mxn":
+                    $value2 = $value1 * 19.9690;
+                    break;
+            }
+            break;
+        case "mxn":
+            switch($currency2){
+                case "eur":
+                    $value2 = $value1 * 0.0424;
+                    break;
+                case "egp":
+                    $value2 = $value1 * 0.7853;
+                    break;
+                case "usd":
+                    $value2 = $value1 * 0.0501;
+                    break;
+                case "mxn":
+                    $value2 = $value1;
+                    break;
+            }
+            break;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +79,21 @@
     <title>the-dream</title>
 </head>
 <body>
-    <form action="" method="get">
-        <label for="egp">EGP</label>
-        <input type="text" name="egp" id="egp" value="<?php echo round($egp, 2) ?>">
-        <label for="euro">EUR</label>
-        <input type="text" name="euro" id="euro" value="<?php echo round($euro, 2) ?>">
+    <form action="" method="GET">
+        <select name="currency1" id="currency1">
+            <option value="eur">EUR</option>
+            <option value="egp">EGP</option>
+            <option value="usd">USD</option>
+            <option value="MXN">MXN</option>
+        </select>
+        <input type="text" name="value1" id="value1" value="<?php echo round($value1, 2) ?>">
+        <select name="currency2" id="currency2">
+            <option value="eur">EUR</option>
+            <option value="egp">EGP</option>
+            <option value="usd">USD</option>
+            <option value="MXN">MXN</option>
+        </select>
+        <input type="text" name="value2" id="value2" value="<?php echo round($value2, 2) ?>" readonly>
         <input type="submit" value="submit">
     </form>
 </body>
